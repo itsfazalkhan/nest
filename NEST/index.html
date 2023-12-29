@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="sign-up">
+      <div class="sign-up-child"></div>
+      <div class="sign-up-item"></div>
+      <div class="confirm-password">CONFIRM PASSWORD:</div>
+      <div class="new-password">NEW PASSWORD:</div>
+      <div class="sign-up-inner"></div>
+      <div class="sign-up1">SIGN UP</div>
+      <input class="sign-up-child1" type="password" />
+
+      <input class="sign-up-child2" type="text" />
+
+      <input class="sign-up-child3" type="number" />
+
+      <input class="sign-up-child4" type="password" />
+
+      <button class="rectangle-parent3" autofocus="{true}" id="submit">
+        <div class="group-child3"></div>
+        <div class="submit4">SUBMIT</div>
+      </button>
+      <div class="name1">NAME:</div>
+      <div class="phone-number">PHONE NUMBER:</div>
+    </div>
+
+    <script>
+      var groupButton = document.getElementById("submit");
+      if (groupButton) {
+        groupButton.addEventListener("click", function (e) {
+          window.location.href = "./login.html";
+        });
+      }
+      </script>
+  </body>
+</html>

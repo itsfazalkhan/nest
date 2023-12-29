@@ -1,0 +1,202 @@
+.medicine-used-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-goldenrod);
+  width: 1440px;
+  height: 704px;
+}
+.medicine-used-item {
+  position: absolute;
+  top: 133px;
+  left: 156px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-white);
+  border: 5px solid var(--color-black);
+  box-sizing: border-box;
+  width: 1128px;
+  height: 1141px;
+}
+.childs-sign,
+.medicine-name,
+.name-of-illness {
+  position: absolute;
+  top: 928px;
+  left: 212px;
+  display: inline-block;
+  width: 392px;
+  height: 47px;
+}
+.childs-sign,
+.name-of-illness {
+  top: 1042px;
+}
+.name-of-illness {
+  top: 799px;
+  width: 412px;
+}
+.medicine-used-inner {
+  position: absolute;
+  top: 225px;
+  left: 356px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-goldenrod);
+  border: 5px solid var(--color-black);
+  box-sizing: border-box;
+  width: 728px;
+  height: 108px;
+}
+.medicine-used1 {
+  position: absolute;
+  top: 253px;
+  left: 559px;
+  color: var(--color-white);
+  display: inline-block;
+  width: 322px;
+  height: 57px;
+}
+.medicine-used-child1,
+.medicine-used-child2 {
+  border: 5px solid var(--color-black);
+  position: absolute;
+  border-radius: var(--br-11xl);
+  box-sizing: border-box;
+}
+.medicine-used-child1 {
+  outline: 0;
+  background-color: var(--color-white);
+  top: 787px;
+  left: 642px;
+  width: 620px;
+  height: 72px;
+}
+.medicine-used-child2 {
+  top: 517px;
+}
+.medicine-used-child2,
+.medicine-used-child3,
+.medicine-used-child4 {
+  outline: 0;
+  background-color: var(--color-white);
+  left: 642px;
+  width: 620px;
+  height: 72px;
+}
+.medicine-used-child3 {
+  border: 5px solid var(--color-black);
+  position: absolute;
+  top: 389px;
+  border-radius: var(--br-11xl);
+  box-sizing: border-box;
+}
+.medicine-used-child4 {
+  top: 652px;
+}
+.group-child1,
+.medicine-used-child4,
+.medicine-used-child5 {
+  position: absolute;
+  border-radius: var(--br-11xl);
+  border: 5px solid var(--color-black);
+  box-sizing: border-box;
+}
+.medicine-used-child5 {
+  outline: 0;
+  background-color: var(--color-white);
+  top: 916px;
+  left: 642px;
+  width: 620px;
+  height: 72px;
+}
+.group-child1 {
+  top: 0;
+  left: 0;
+  background-color: var(--color-goldenrod);
+  width: 275px;
+  height: 74px;
+}
+.submit3 {
+  position: absolute;
+  top: 13px;
+  left: 60px;
+  font-size: var(--font-size-21xl);
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+  display: inline-block;
+  width: 156px;
+  height: 47px;
+}
+.rectangle-parent1 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 1157px;
+  left: 582px;
+  width: 275px;
+  height: 74px;
+}
+.child-id,
+.child-name,
+.date3 {
+  position: absolute;
+  top: 529px;
+  left: 212px;
+  display: inline-block;
+  width: 392px;
+  height: 47px;
+}
+.child-id,
+.child-name {
+  top: 402px;
+}
+.child-name {
+  top: 664px;
+}
+.group-child2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  border: 5px solid var(--color-black);
+  box-sizing: border-box;
+  width: 239px;
+  height: 60px;
+}
+.upload1 {
+  position: absolute;
+  top: 15px;
+  left: 59px;
+  font-size: var(--font-size-11xl);
+  font-family: var(--font-inter);
+  color: var(--color-black);
+  text-align: left;
+  display: inline-block;
+  width: 122px;
+  height: 30px;
+}
+.rectangle-parent2 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 1036px;
+  left: 642px;
+  width: 239px;
+  height: 60px;
+}
+.medicine-used {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1408px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-21xl);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
