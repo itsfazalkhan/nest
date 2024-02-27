@@ -12,20 +12,45 @@
     <title>NEST | Children's Village</title>
 
     <!--Navigation Bar-->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">NEST</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="medicine_stock.html">Medicine</a></li>
-                <li class="active"><a href="child_progress_report.html">Child Progress Report</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Medicine
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="medicine_stock.html">Medicine Stock</a></li>
+                        <li><a href="medicine_used.html">Medicine Used</a></li>
+                    </ul>
+                </li>
+                <li><a href="child_progress_report.html">Child Progress Report</a></li>
                 <li><a href="volunteer_register.html">Volunteer Register</a></li>
-                <li><a href="child_stock_distribution.html">Children Stock/Distribution</a></li>
-                <li><a href="#">Movement</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock\Distribution
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="stock.html">Stock Entry</a></li>
+                      <li><a href="distribution.html">Distribution</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Movement
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="child_movement.html">Children's Movement</a></li>
+                      <li><a href="staff_movement.html">Staff Movement</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">Parents Meeting</a></li>
-                <li><a href="#">Register Records</a></li>
+                <li><a href="#">Register Of Records</a></li>
                 <li id="login"><a href="#">Login</a></li>
             </ul>
         </div>
