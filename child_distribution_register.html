@@ -10,11 +10,8 @@
     <link rel="stylesheet" href="style.css">
 
     <title>NEST | Children's Village</title>
-</head>
 
-<body>
-
-    <!-- Navigation Bar -->
+    <!--Navigation Bar-->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -56,24 +53,32 @@
         </div>
     </nav>
 
+</head>
+
+<body>
+
     <div class="container">
-        <h2>Medicine Stock</h2>
-        <form id="medicineStockForm">
+        <h2>Children's Distribution Register</h2>
+        <form id="distributionForm">
             <div class="form-group">
-                <label for="medicineName">Medicine Name:</label>
-                <input type="text" class="form-control" id="medicineName">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date">
             </div>
             <div class="form-group">
-                <label for="quantity">Quantity:</label>
-                <input type="number" class="form-control" id="quantity">
+                <label for="stationary">Stationary:</label>
+                <input type="text" class="form-control" id="stationary">
             </div>
             <div class="form-group">
-                <label for="purchaseDate">Date of Purchase:</label>
-                <input type="date" class="form-control" id="purchaseDate">
+                <label for="cosmetics">Cosmetics:</label>
+                <input type="text" class="form-control" id="cosmetics">
             </div>
             <div class="form-group">
-                <label for="expiryDate">Expiry Date:</label>
-                <input type="date" class="form-control" id="expiryDate">
+                <label for="clothing">Clothing:</label>
+                <input type="text" class="form-control" id="clothing">
+            </div>
+            <div class="form-group">
+                <label for="toiletry">Toiletry:</label>
+                <input type="text" class="form-control" id="toiletry">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -81,7 +86,7 @@
 
     <script>
         $(document).ready(function () {
-            $("#medicineStockForm").submit(function (event) {
+            $("#distributionForm").submit(function (event) {
                 event.preventDefault();
                 alert("Data saved successfully!");
             });

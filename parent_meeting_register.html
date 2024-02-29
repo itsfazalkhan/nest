@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="style.css">
 
     <title>NEST | Children's Village</title>
-</head>
-
-<body>
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default">
@@ -56,24 +53,28 @@
         </div>
     </nav>
 
+</head>
+
+<body>
+
     <div class="container">
-        <h2>Medicine Stock</h2>
-        <form id="medicineStockForm">
+        <h2>Parent Meeting Register</h2>
+        <form id="parentForm">
             <div class="form-group">
-                <label for="medicineName">Medicine Name:</label>
-                <input type="text" class="form-control" id="medicineName">
+                <label for="meetingDate">Date:</label>
+                <input type="date" class="form-control" id="meetingDate" name="meetingDate">
             </div>
             <div class="form-group">
-                <label for="quantity">Quantity:</label>
-                <input type="number" class="form-control" id="quantity">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name">
             </div>
             <div class="form-group">
-                <label for="purchaseDate">Date of Purchase:</label>
-                <input type="date" class="form-control" id="purchaseDate">
+                <label for="contact">Contact:</label>
+                <input type="text" class="form-control" id="contact" name="contact">
             </div>
             <div class="form-group">
-                <label for="expiryDate">Expiry Date:</label>
-                <input type="date" class="form-control" id="expiryDate">
+                <label for="remark">Remark:</label>
+                <textarea class="form-control" id="remark" name="remark"></textarea>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -81,7 +82,7 @@
 
     <script>
         $(document).ready(function () {
-            $("#medicineStockForm").submit(function (event) {
+            $("#parentForm").submit(function (event) {
                 event.preventDefault();
                 alert("Data saved successfully!");
             });

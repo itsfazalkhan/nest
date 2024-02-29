@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="style.css">
 
     <title>NEST | Children's Village</title>
-</head>
-
-<body>
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default">
@@ -56,24 +53,35 @@
         </div>
     </nav>
 
+</head>
+
+<body>
     <div class="container">
-        <h2>Medicine Stock</h2>
-        <form id="medicineStockForm">
+        <h2>Medicine Used</h2>
+        <form id="medicineUsedForm">
             <div class="form-group">
-                <label for="medicineName">Medicine Name:</label>
-                <input type="text" class="form-control" id="medicineName">
+                <label for="child_id">Child ID:</label>
+                <input type="text" class="form-control" id="child_id">
             </div>
             <div class="form-group">
-                <label for="quantity">Quantity:</label>
-                <input type="number" class="form-control" id="quantity">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date">
             </div>
             <div class="form-group">
-                <label for="purchaseDate">Date of Purchase:</label>
-                <input type="date" class="form-control" id="purchaseDate">
+                <label for="child_name">Child Name:</label>
+                <input type="text" class="form-control" id="child_name">
             </div>
             <div class="form-group">
-                <label for="expiryDate">Expiry Date:</label>
-                <input type="date" class="form-control" id="expiryDate">
+                <label for="illness">Name of Illness:</label>
+                <input type="text" class="form-control" id="illness">
+            </div>
+            <div class="form-group">
+                <label for="medicine_name">Medicine Name:</label>
+                <input type="text" class="form-control" id="medicine_name">
+            </div>
+            <div class="form-group">
+                <label for="child_sign">Child's Sign (Image):</label>
+                <input type="file" class="form-control-file" id="child_sign">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -81,7 +89,7 @@
 
     <script>
         $(document).ready(function () {
-            $("#medicineStockForm").submit(function (event) {
+            $("#medicineUsedForm").submit(function (event) {
                 event.preventDefault();
                 alert("Data saved successfully!");
             });
