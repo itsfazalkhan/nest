@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>NEST | Child Details Entry</title>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">NEST</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li class="active" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Details
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="child_details_entry.html">Entry</a></li>
+                        <li><a href="child_details_view.php">View</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Medicine
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="medicine_stock.html">Medicine Stock</a></li>
+                        <li><a href="medicine_used.html">Medicine Used</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Progress Report
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="child_progress_report_entry.html">Entry</a></li>
+                        <li><a href="child_progress_report_view.html">View</a></li>
+                    </ul>
+                </li>
+                <li><a href="volunteer_register.html">Volunteer Register</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="child_stock_register.html">Stock Entry</a></li>
+                      <li><a href="child_distribution_register.html">Distribution</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Movement
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="child_movement_register.html">Children's Movement</a></li>
+                      <li><a href="staff_movement_register.html">Staff Movement</a></li>
+                  </ul>
+                </li>
+                <li><a href="parent_meeting_register.html">Parents Meeting</a></li>
+            </ul>
+        </div>
+    </nav>
+    </head>
+
+    <body>
+    <div class="container">
+        <h2>Child Details Entry</h2>
+        <form id="childDetailsForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="admissionNumber">Admission Number:</label>
+                <input type="text" class="form-control" id="admissionNumber">
+            </div>
+            <div class="form-group">
+                <label for="dateOfAdmission">Date of Admission:</label>
+                <input type="date" class="form-control" id="dateOfAdmission">
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" id="age">
+            </div>
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select class="form-control" id="sex">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="religion">Religion:</label>
+                <input type="text" class="form-control" id="religion">
+            </div>
+            <div class="form-group">
+                <label for="language">Language:</label>
+                <input type="text" class="form-control" id="language">
+            </div>
+            <div class="form-group">
+                <label for="permanentAddress">Permanent Address:</label>
+                <input type="text" class="form-control" id="permanentAddress">
+            </div>
+            <div class="form-group">
+                <label for="presentAddress">Present Address:</label>
+                <input type="text" class="form-control" id="presentAddress">
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" class="form-control" id="phoneNumber">
+            </div>
+            <div class="form-group">
+                <label for="aadhaarNumber">Aadhaar Number:</label>
+                <input type="text" class="form-control" id="aadhaarNumber">
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo:</label>
+                <input type="file" class="form-control" id="photo">
+            </div>
+
+            <!-- Family Constellation Section -->
+            <h3>Family Constellation</h3>
+            <div id="familyMembers">
+                <!-- Family members will be dynamically added here -->
+            </div>
+            <button type="button" class="btn btn-default" id="addFamilyMember">Add Family Member</button>
+            
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var familyMemberIndex = 0;
+
+            $("#addFamilyMember").click(function () {
+                familyMemberIndex++;
+                var html = '<div class="panel panel-default">' +
+                    '<div class="panel-body">' +
+                    '<div class="form-group">' +
+                    '<label for="familyName' + familyMemberIndex + '">Name:</label>' +
+                    '<input type="text" class="form-control" id="familyName' + familyMemberIndex + '">' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label for="familyRelation' + familyMemberIndex + '">Relation:</label>' +
+                    '<input type="text" class="form-control" id="familyRelation' + familyMemberIndex + '">' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label for="familyAge' + familyMemberIndex + '">Age:</label>' +
+                    '<input type="number" class="form-control" id="familyAge' + familyMemberIndex + '">' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label for="familyOccupation' + familyMemberIndex + '">Occupation:</label>' +
+                    '<input type="text" class="form-control" id="familyOccupation' + familyMemberIndex + '">' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label for="familyEducation' + familyMemberIndex + '">Education:</label>' +
+                    '<input type="text" class="form-control" id="familyEducation' + familyMemberIndex + '">' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label for="familyAliveDead' + familyMemberIndex + '">Alive/Dead:</label>' +
+                    '<input type="text" class="form-control" id="familyAliveDead' + familyMemberIndex + '">' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label for="familyRemarks' + familyMemberIndex + '">Remarks:</label>' +
+                    '<input type="text" class="form-control" id="familyRemarks' + familyMemberIndex + '">' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+
+                $("#familyMembers").append(html);
+            });
+
+            $("#childDetailsForm").submit(function (event) {
+                event.preventDefault();
+                // Here you can handle form submission and data saving
+                alert("Data saved successfully!");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

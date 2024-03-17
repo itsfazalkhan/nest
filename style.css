@@ -5,3 +5,43 @@ table td{
 table{
     width: 100%;
 }
+/* style.css */
+
+/* Navigation Bar */
+.navbar-default {
+    background-color: #337ab7; /* Blue color */
+    border-color: #337ab7; /* Blue color */
+}
+
+.navbar-default .navbar-brand {
+    color: #ffffff; /* White text color */
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff; /* White text color */
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: #286090; /* Darker shade of blue on hover/focus */
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    background-color: #286090; /* Darker shade of blue for active link */
+}
+
+/* Panel Headers */
+.panel-default > .panel-heading {
+    background-color: #337ab7; /* Blue color */
+    border-color: #337ab7; /* Blue color */
+    color: #ffffff; /* White text color */
+}
+
+/* Background */
+body {
+    background-color: #e6f2ff; /* Light blue background */
+    background-image: url('bg_marble.jpg'); /* Add URL to your marble texture image */
+    background-repeat: repeat; /* Repeat the texture */
+}

@@ -20,6 +20,15 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a></li>
                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Details
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="child_details_entry.html">Entry</a></li>
+                        <li><a href="child_details_view.php">View</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Medicine
                         <span class="caret"></span>
                     </a>
@@ -28,7 +37,15 @@
                         <li><a href="medicine_used.html">Medicine Used</a></li>
                     </ul>
                 </li>
-                <li><a href="child_progress_report.html">Child Progress Report</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Progress Report
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="child_progress_report_entry.html">Entry</a></li>
+                        <li><a href="child_progress_report_view.html">View</a></li>
+                    </ul>
+                </li>
                 <li><a href="volunteer_register.html">Volunteer Register</a></li>
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
@@ -59,10 +76,10 @@
 
     <div class="container">
         <h2>Parent Meeting Register</h2>
-        <form id="parentForm" action="parent_meeting.php" method="post">
+        <form id="parentForm">
             <div class="form-group">
                 <label for="meetingDate">Date:</label>
-                <input type="date" class="form-control" id="date" name="date">
+                <input type="date" class="form-control" id="meetingDate" name="meetingDate">
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -84,27 +101,10 @@
         $(document).ready(function () {
             $("#parentForm").submit(function (event) {
                 event.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "parent_meeting.php",
-                    data: $("#parentForm").serialize(),
-                    success: function (response) {
-                        if (response === "success") {
-                            // Display pop-up message
-                            alert("Data saved successfully!");
-                            // Redirect to the original HTML file
-                            window.location.href = "parent_meeting_register.html";
-                        } else {
-                            // Display pop-up message for error
-                            alert("An error occurred while saving data!");
-                        }
-                    }
-                });
+                alert("Data saved successfully!");
             });
         });
     </script>
-    
-    
 
 </body>
 
