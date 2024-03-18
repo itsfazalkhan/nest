@@ -76,7 +76,7 @@
 
     <div class="container">
         <h2>Parent Meeting Register</h2>
-        <form id="parentForm">
+        <form id="parentForm" action="parent_meeting.php" method="post">
             <div class="form-group">
                 <label for="meetingDate">Date:</label>
                 <input type="date" class="form-control" id="meetingDate" name="meetingDate">
@@ -97,14 +97,7 @@
         </form>
     </div>
 
-    <script>
-        $(document).ready(function () {
-            $("#parentForm").submit(function (event) {
-                event.preventDefault();
-                alert("Data saved successfully!");
-            });
-        });
-    </script>
+    
 
 </body>
 

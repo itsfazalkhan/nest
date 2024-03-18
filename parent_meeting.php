@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Step 3: Retrieve form data
-$date = $_POST['date'];
+$date = $_POST['meetingDate'];
 $name = $_POST['name'];
 $contact = $_POST['contact'];
 $remark = $_POST['remark'];

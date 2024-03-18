@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "nest";
+    $dbname = "nestdb";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
