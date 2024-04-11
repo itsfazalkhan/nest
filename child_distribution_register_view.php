@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEST | Children's Distribution Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
+</head>
 
-    <title>NEST | Children's Village</title>
-
+<body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -39,7 +40,7 @@
                         <li><a href="medicine_used_view.html">Medicine Used View</a></li>
                     </ul>
                 </li>
-                <li class="active" class="dropdown">
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Progress Report
                         <span class="caret"></span>
                     </a>
@@ -57,7 +58,7 @@
                         <li><a href="volunteer_register_view.html">View</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="active" class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
                       <span class="caret"></span>
                   </a>
@@ -91,41 +92,65 @@
             </ul>
         </div>
     </nav>
-</head>
-
-<body>
 
     <div class="container">
-        <h2>Foster Home Child's Progress</h2>
-        <form class="form-horizontal" action="/action_page.php" id="childProgressForm">
-            <table border="1">
-                <tr>
-                    <td colspan="4">Foster Home Child's Progress</td>
-                </tr>
-                <tr>
-                    <td width="33%">Photo <br><br><br><br><br>
-                    Year:</td>
-                    <td width="33%">Photo <br><br><br><br><br>
-                        Year:</td>
-                        <td width="33%" colspan="2">Photo <br><br><br><br><br>
-                            Year:</td>
-                </tr>
-                <tr>
-                    <td width="25%">Child ID:</td>
-                    <td width="25%"></td>
-                    <td width="25%">Child Name:</td>
-                    <td width="25%"></td>
-                </tr>
-
-            </table>
+        <h2>Children's Distribution Register</h2>
+        <form id="distributionForm" method="post">
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+            <button type="submit" class="btn btn-default" name="searchBtn">Search</button>
         </form>
+
+        <?php
+        // Database connection
+        $servername = "your_servername";
+        $username = "your_username";
+        $password = "your_password";
+        $dbname = "your_database";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Handling form submission
+        if(isset($_POST['searchBtn'])) {
+            $date = $_POST['date'];
+            $sql = "SELECT * FROM distribution_register WHERE date = '$date'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                echo "<h3>Distribution Details:</h3>";
+                while($row = $result->fetch_assoc()) {
+                    echo "<p>Date: " . $row["date"]. "</p>";
+                    echo "<p>Stationary: " . $row["stationary"]. "</p>";
+                    echo "<p>Cosmetics: " . $row["cosmetics"]. "</p>";
+                    echo "<p>Clothing: " . $row["clothing"]. "</p>";
+                    echo "<p>Toiletry: " . $row["toiletry"]. "</p>";
+                }
+            } else {
+                echo "No distribution details found for the selected date.";
+            }
+        }
+        ?>
     </div>
 
     <script>
         $(document).ready(function () {
-            $("#childProgressForm").submit(function (event) {
+            $("#distributionForm").submit(function (event) {
                 event.preventDefault();
-                alert("Data saved successfully!");
+                // AJAX request to handle form submission without reloading the page
+                $.ajax({
+                    type: "POST",
+                    url: "distribution_process.php", // Assuming PHP script to process form data
+                    data: $("#distributionForm").serialize(),
+                    success: function (response) {
+                        // Displaying the response from the server
+                        $(".container").html(response);
+                    }
+                });
             });
         });
     </script>

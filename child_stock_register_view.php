@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEST | Children's Stock Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
+</head>
 
-    <title>NEST | Children's Village</title>
-
+<body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -39,7 +40,7 @@
                         <li><a href="medicine_used_view.html">Medicine Used View</a></li>
                     </ul>
                 </li>
-                <li class="active" class="dropdown">
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Progress Report
                         <span class="caret"></span>
                     </a>
@@ -57,7 +58,7 @@
                         <li><a href="volunteer_register_view.html">View</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="active" class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
                       <span class="caret"></span>
                   </a>
@@ -91,45 +92,76 @@
             </ul>
         </div>
     </nav>
-</head>
-
-<body>
-
     <div class="container">
-        <h2>Foster Home Child's Progress</h2>
-        <form class="form-horizontal" action="/action_page.php" id="childProgressForm">
-            <table border="1">
-                <tr>
-                    <td colspan="4">Foster Home Child's Progress</td>
-                </tr>
-                <tr>
-                    <td width="33%">Photo <br><br><br><br><br>
-                    Year:</td>
-                    <td width="33%">Photo <br><br><br><br><br>
-                        Year:</td>
-                        <td width="33%" colspan="2">Photo <br><br><br><br><br>
-                            Year:</td>
-                </tr>
-                <tr>
-                    <td width="25%">Child ID:</td>
-                    <td width="25%"></td>
-                    <td width="25%">Child Name:</td>
-                    <td width="25%"></td>
-                </tr>
-
-            </table>
+        <h2>Children's Stock Register</h2>
+        <form id="childStockForm" method="post">
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+            <button type="submit" class="btn btn-default" name="searchBtn">Search</button>
         </form>
+
+        <?php
+        // Database connection
+        $servername = "your_servername";
+        $username = "your_username";
+        $password = "your_password";
+        $dbname = "your_database";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Handling form submission
+        if(isset($_POST['searchBtn'])) {
+            $date = $_POST['date'];
+            $sql = "SELECT * FROM children_stock WHERE date = '$date'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                echo "<h3>Stock Details for $date:</h3>";
+                echo "<table class='table'>";
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th>Date</th>";
+                echo "<th>Particulars</th>";
+                echo "<th>Received From</th>";
+                echo "<th>Received Quantity</th>";
+                echo "<th>Issued Quantity</th>";
+                echo "<th>Balance Quantity</th>";
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>".$row["date"]."</td>";
+                    echo "<td>".$row["particulars"]."</td>";
+                    echo "<td>".$row["received_from"]."</td>";
+                    echo "<td>".$row["received_quantity"]."</td>";
+                    echo "<td>".$row["issued_quantity"]."</td>";
+                    echo "<td>".$row["balance_quantity"]."</td>";
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo "No stock details found for $date";
+            }
+        }
+        ?>
     </div>
 
     <script>
         $(document).ready(function () {
-            $("#childProgressForm").submit(function (event) {
+            $("#childStockForm").submit(function (event) {
                 event.preventDefault();
-                alert("Data saved successfully!");
+                // AJAX request for form submission can be added here
+                alert("Data fetched successfully!");
             });
         });
     </script>
-
 </body>
 
 </html>

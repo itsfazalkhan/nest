@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEST | Child Movement Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
+</head>
 
-    <title>NEST | Children's Village</title>
-
+<body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -39,7 +40,7 @@
                         <li><a href="medicine_used_view.html">Medicine Used View</a></li>
                     </ul>
                 </li>
-                <li class="active" class="dropdown">
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Progress Report
                         <span class="caret"></span>
                     </a>
@@ -68,7 +69,7 @@
                       <li><a href="child_distribution_register_view.html">Distribution View</a></li>
                   </ul>
                 </li>
-                <li class="dropdown">
+                <li class="active" class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Movement
                       <span class="caret"></span>
                   </a>
@@ -91,39 +92,59 @@
             </ul>
         </div>
     </nav>
-</head>
-
-<body>
 
     <div class="container">
-        <h2>Foster Home Child's Progress</h2>
-        <form class="form-horizontal" action="/action_page.php" id="childProgressForm">
-            <table border="1">
-                <tr>
-                    <td colspan="4">Foster Home Child's Progress</td>
-                </tr>
-                <tr>
-                    <td width="33%">Photo <br><br><br><br><br>
-                    Year:</td>
-                    <td width="33%">Photo <br><br><br><br><br>
-                        Year:</td>
-                        <td width="33%" colspan="2">Photo <br><br><br><br><br>
-                            Year:</td>
-                </tr>
-                <tr>
-                    <td width="25%">Child ID:</td>
-                    <td width="25%"></td>
-                    <td width="25%">Child Name:</td>
-                    <td width="25%"></td>
-                </tr>
-
-            </table>
+        <h2>Child Movement Register</h2>
+        <form id="childMovementForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <button type="submit" class="btn btn-default" name="searchBtn">Search</button>
         </form>
+
+        <?php
+        // Database connection
+        $servername = "your_servername";
+        $username = "your_username";
+        $password = "your_password";
+        $dbname = "your_database";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Handling form submission
+        if(isset($_POST['searchBtn'])) {
+            $name = $_POST['name'];
+            $sql = "SELECT * FROM child_movement WHERE name = '$name'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                echo "<h3>Child Movement Details:</h3>";
+                while($row = $result->fetch_assoc()) {
+                    echo "<p>Date: " . $row["date"]. "</p>";
+                    echo "<p>Place: " . $row["place"]. "</p>";
+                    echo "<p>Purpose: " . $row["purpose"]. "</p>";
+                    echo "<p>Accompanied Person: " . $row["accompanied"]. "</p>";
+                    echo "<p>Departure Date: " . $row["departure_date"]. "</p>";
+                    echo "<p>Return Date: " . $row["return_date"]. "</p>";
+                    echo "<p>Remark: " . $row["remark"]. "</p>";
+                    echo "<p>Child's Sign (Image): <img src='" . $row["child_sign"] . "' alt='Child Sign'></p>";
+                    echo "<p>Person's Sign (Image): <img src='" . $row["person_sign"] . "' alt='Person Sign'></p>";
+                    echo "<p>Staff's Sign (Image): <img src='" . $row["staff_sign"] . "' alt='Staff Sign'></p>";
+                }
+            } else {
+                echo "No child movement details found for the given name.";
+            }
+        }
+        ?>
     </div>
 
     <script>
         $(document).ready(function () {
-            $("#childProgressForm").submit(function (event) {
+            $("#childMovementForm").submit(function (event) {
                 event.preventDefault();
                 alert("Data saved successfully!");
             });

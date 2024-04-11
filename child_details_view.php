@@ -20,13 +20,13 @@
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a></li>
-                <li class="dropdown active">
+                <li class="active" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Details
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="child_details_entry.html">Entry</a></li>
-                        <li><a href="child_details_view.html">View</a></li>
+                        <li><a href="child_details_view.php">View</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -34,8 +34,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="medicine_stock.html">Medicine Stock</a></li>
-                        <li><a href="medicine_used.html">Medicine Used</a></li>
+                        <li><a href="medicine_stock_entry.html">Medicine Stock Entry</a></li>
+                        <li><a href="medicine_stock_view.html">Medicine Stock View</a></li>
+                        <li><a href="medicine_used_entry.html">Medicine Used Entry</a></li>
+                        <li><a href="medicine_used_view.html">Medicine Used View</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -47,26 +49,46 @@
                         <li><a href="child_progress_report_view.html">View</a></li>
                     </ul>
                 </li>
-                <li><a href="volunteer_register.html">Volunteer Register</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Volunteer Register
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="child_stock_register.html">Stock Entry</a></li>
-                        <li><a href="child_distribution_register.html">Distribution</a></li>
+                        <li><a href="volunteer_register_entry.html">Entry</a></li>
+                        <li><a href="volunteer_register_view.html">View</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Movement
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="child_stock_register_entry.html">Stock Entry</a></li>
+                      <li><a href="child_stock_register_view.html">Stock View</a></li>
+                      <li><a href="child_distribution_register_entry.html">Distribution Entry</a></li>
+                      <li><a href="child_distribution_register_view.html">Distribution View</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Movement
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="child_movement_register_entry.html">Children's Movement Entry</a></li>
+                      <li><a href="child_movement_register_view.html">Children's Movement View</a></li>
+                      <li><a href="staff_movement_register_entry.html">Staff Movement Entry</a></li>
+                      <li><a href="staff_movement_register_view.html">Staff Movement View</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Parents Meeting
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="child_movement_register.html">Children's Movement</a></li>
-                        <li><a href="staff_movement_register.html">Staff Movement</a></li>
+                        <li><a href="parent_meeting_register_entry.html">Parents Meeting Entry</a></li>
+                        <li><a href="parent_meeting_register_view.html">Parents Meeting View</a></li>
                     </ul>
                 </li>
-                <li><a href="parent_meeting_register.html">Parents Meeting</a></li>
             </ul>
         </div>
     </nav>
