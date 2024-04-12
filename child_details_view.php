@@ -134,6 +134,7 @@
                     echo "<p>Present Address". $row["pre_add"]. "</p>";
                     echo "<p>Phone Number". $row["phone"]. "</p>";
                     echo "<p>Aadhaar Number". $row["aadhaar"]. "</p>";
+                    echo "<p>Case History". $row["case"]. "</p>";
 
                     // Fetching family constellation data
                     $sql_family = "SELECT * FROM family_constellation";
