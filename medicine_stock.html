@@ -36,39 +36,19 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="medicine_stock_entry.html">Medicine Stock Entry</a></li>
-                        <li><a href="medicine_stock_view.php">Medicine Stock View</a></li>
-                        <li><a href="medicine_used_entry.html">Medicine Used Entry</a></li>
-                        <li><a href="medicine_used_view.php">Medicine Used View</a></li>
+                        <li><a href="medicine_stock.html">Medicine Stock</a></li>
+                        <li><a href="medicine_used.html">Medicine Used</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Progress Report
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="child_progress_report_entry.html">Entry</a></li>
-                        <li><a href="child_progress_report_view.php">View</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Volunteer Register
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="volunteer_register_entry.html">Entry</a></li>
-                        <li><a href="volunteer_register_view.php">View</a></li>
-                    </ul>
-                </li>
+                <li><a href="child_pr_entry.html">Child Progress Report</a></li>
+                <li><a href="volunteer_register.html">Volunteer Register</a></li>
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
                       <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                      <li><a href="child_stock_register_entry.html">Stock Entry</a></li>
-                      <li><a href="child_stock_register_view.php">Stock View</a></li>
-                      <li><a href="child_distribution_register_entry.html">Distribution Entry</a></li>
-                      <li><a href="child_distribution_register_view.php">Distribution View</a></li>
+                      <li><a href="child_stock_register.html">Stock Entry</a></li>
+                      <li><a href="child_distribution_register.html">Distribution</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
@@ -76,43 +56,51 @@
                       <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                      <li><a href="child_movement_register_entry.html">Children's Movement Entry</a></li>
-                      <li><a href="child_movement_register_view.php">Children's Movement View</a></li>
-                      <li><a href="staff_movement_register_entry.html">Staff Movement Entry</a></li>
-                      <li><a href="staff_movement_register_view.php">Staff Movement View</a></li>
+                      <li><a href="child_movement_register.html">Children's Movement</a></li>
+                      <li><a href="staff_movement_register.html">Staff Movement</a></li>
                   </ul>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Parents Meeting
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="parent_meeting_register_entry.html">Parents Meeting Entry</a></li>
-                        <li><a href="parent_meeting_register_view.php">Parents Meeting View</a></li>
-                    </ul>
-                </li>
+                <li><a href="parent_meeting_register.html">Parents Meeting</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <h2>Medicine Stock</h2>
-        <form id="medicineStockForm">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Medicine Stock</h2>
+            </div>
+            <div class="col-md-6 text-right">
+                <button type="button" class="btn btn-primary" onclick="window.location.href='medicine_stock_view.php'">View</button>
+            </div>
+        </div>
+        <?php
+        session_start();
+        if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                <?php
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+                unset($_SESSION['msg_type']);
+                ?>
+            </div>
+        <?php endif; ?>
+        <form id="medicineStockForm" action="medicine_stock.php" method="post">
             <div class="form-group">
                 <label for="medicineName">Medicine Name:</label>
-                <input type="text" class="form-control" id="medicineName">
+                <input type="text" class="form-control" id="medicine_name" name="medicine_name">
             </div>
             <div class="form-group">
                 <label for="quantity">Quantity:</label>
-                <input type="number" class="form-control" id="quantity">
+                <input type="number" class="form-control" id="quantity" name="quantity">
             </div>
             <div class="form-group">
                 <label for="purchaseDate">Date of Purchase:</label>
-                <input type="date" class="form-control" id="purchaseDate">
+                <input type="date" class="form-control" id="date_purchase" name="date_purchase">
             </div>
             <div class="form-group">
                 <label for="expiryDate">Expiry Date:</label>
-                <input type="date" class="form-control" id="expiryDate">
+                <input type="date" class="form-control" id="expiry_date" name="expiry_date">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -121,7 +109,7 @@
     <script>
         $(document).ready(function () {
             $("#medicineStockForm").submit(function (event) {
-                event.preventDefault();
+                //event.preventDefault();
                 alert("Data saved successfully!");
             });
         });

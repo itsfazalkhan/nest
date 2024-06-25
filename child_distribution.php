@@ -22,13 +22,14 @@ if ($conn->connect_error) {
 
 // Step 3: Retrieve form data
 $date = $_POST['date'];
-$name = $_POST['name'];
-$contact = $_POST['contact'];
-$remark = $_POST['remark'];
+$stationary = $_POST['stationary'];
+$cosmetics = $_POST['cosmetics'];
+$clothing = $_POST['clothing'];
+$toiletry = $_POST['toiletry'];
 
 // Step 4: Insert data into the database
-$sql = "INSERT INTO parent_meeting (date, name, contact, remark)
-        VALUES ('$date', '$name', '$contact', '$remark')";
+$sql = "INSERT INTO child_register (date, stationary, cosmetics, clothing, toiletry)
+        VALUES ('$date', '$stationary', '$cosmetics', '$clothing','$toiletry' )";
 
 if ($conn->query($sql) === TRUE) {
     // Data inserted successfully
@@ -44,6 +45,6 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Redirect back to the form page
-header("Location: parent_meeting_register.html");
+header("Location: child_distribution_register.html");
 exit();
 ?>

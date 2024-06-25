@@ -22,13 +22,15 @@ if ($conn->connect_error) {
 
 // Step 3: Retrieve form data
 $date = $_POST['date'];
-$name = $_POST['name'];
-$contact = $_POST['contact'];
-$remark = $_POST['remark'];
+$particulars = $_POST['particulars'];
+$received_from = $_POST['received_from'];
+$received_quantity = $_POST['received_quantity'];
+$issued_quantity = $_POST['issued_quantity'];
+$balance_quantity = $_POST['balance_quantity'];
 
 // Step 4: Insert data into the database
-$sql = "INSERT INTO parent_meeting (date, name, contact, remark)
-        VALUES ('$date', '$name', '$contact', '$remark')";
+$sql = "INSERT INTO child_stock (date, particulars, received_from, received_quantity, issued_quantity, balance_quantity)
+        VALUES ('$date', '$particulars', '$received_from', '$received_quantity','$issued_quantity','$balance_quantity' )";
 
 if ($conn->query($sql) === TRUE) {
     // Data inserted successfully
@@ -44,6 +46,6 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Redirect back to the form page
-header("Location: parent_meeting_register.html");
+header("Location: child_stock_register.html");
 exit();
 ?>

@@ -11,7 +11,7 @@
 
     <title>NEST | Child Details Entry</title>
 
-   <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -33,39 +33,19 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="medicine_stock_entry.html">Medicine Stock Entry</a></li>
-                        <li><a href="medicine_stock_view.php">Medicine Stock View</a></li>
-                        <li><a href="medicine_used_entry.html">Medicine Used Entry</a></li>
-                        <li><a href="medicine_used_view.php">Medicine Used View</a></li>
+                        <li><a href="medicine_stock.html">Medicine Stock</a></li>
+                        <li><a href="medicine_used.html">Medicine Used</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Progress Report
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="child_progress_report_entry.html">Entry</a></li>
-                        <li><a href="child_progress_report_view.php">View</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Volunteer Register
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="volunteer_register_entry.html">Entry</a></li>
-                        <li><a href="volunteer_register_view.php">View</a></li>
-                    </ul>
-                </li>
+                <li><a href="child_pr_entry.html">Child Progress Report</a></li>
+                <li><a href="volunteer_register.html">Volunteer Register</a></li>
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
                       <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                      <li><a href="child_stock_register_entry.html">Stock Entry</a></li>
-                      <li><a href="child_stock_register_view.php">Stock View</a></li>
-                      <li><a href="child_distribution_register_entry.html">Distribution Entry</a></li>
-                      <li><a href="child_distribution_register_view.php">Distribution View</a></li>
+                      <li><a href="child_stock_register.html">Stock Entry</a></li>
+                      <li><a href="child_distribution_register.html">Distribution</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
@@ -73,49 +53,50 @@
                       <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                      <li><a href="child_movement_register_entry.html">Children's Movement Entry</a></li>
-                      <li><a href="child_movement_register_view.php">Children's Movement View</a></li>
-                      <li><a href="staff_movement_register_entry.html">Staff Movement Entry</a></li>
-                      <li><a href="staff_movement_register_view.php">Staff Movement View</a></li>
+                      <li><a href="child_movement_register.html">Children's Movement</a></li>
+                      <li><a href="staff_movement_register.html">Staff Movement</a></li>
                   </ul>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Parents Meeting
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="parent_meeting_register_entry.html">Parents Meeting Entry</a></li>
-                        <li><a href="parent_meeting_register_view.php">Parents Meeting View</a></li>
-                    </ul>
-                </li>
+                <li><a href="parent_meeting_register.html">Parents Meeting</a></li>
             </ul>
         </div>
     </nav>
-    </head>
+</head>
 
-    <body>
+<body>
     <div class="container">
         <h2>Child Details Entry</h2>
-        <form id="childDetailsForm" enctype="multipart/form-data">
+        <?php
+        session_start();
+        if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                <?php
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+                unset($_SESSION['msg_type']);
+                ?>
+            </div>
+        <?php endif; ?>
+        <form id="childDetailsForm" action="child_details_entry.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="admissionNumber">Admission Number:</label>
-                <input type="text" class="form-control" id="admissionNumber">
+                <input type="text" class="form-control" name="admissionNumber" id="admissionNumber">
             </div>
             <div class="form-group">
                 <label for="dateOfAdmission">Date of Admission:</label>
-                <input type="date" class="form-control" id="dateOfAdmission">
+                <input type="date" class="form-control" name="dateOfAdmission" id="dateOfAdmission">
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" name="name" id="name">
             </div>
             <div class="form-group">
                 <label for="age">Age:</label>
-                <input type="number" class="form-control" id="age">
+                <input type="number" class="form-control" name="age" id="age">
             </div>
             <div class="form-group">
                 <label for="sex">Sex:</label>
-                <select class="form-control" id="sex">
+                <select class="form-control" name="sex" id="sex">
                     <option>Male</option>
                     <option>Female</option>
                     <option>Other</option>
@@ -123,43 +104,42 @@
             </div>
             <div class="form-group">
                 <label for="religion">Religion:</label>
-                <input type="text" class="form-control" id="religion">
+                <input type="text" class="form-control" name="religion" id="religion">
             </div>
             <div class="form-group">
                 <label for="language">Language:</label>
-                <input type="text" class="form-control" id="language">
+                <input type="text" class="form-control" name="language" id="language">
             </div>
             <div class="form-group">
                 <label for="permanentAddress">Permanent Address:</label>
-                <input type="text" class="form-control" id="permanentAddress">
+                <input type="text" class="form-control" name="permanentAddress" id="permanentAddress">
             </div>
             <div class="form-group">
                 <label for="presentAddress">Present Address:</label>
-                <input type="text" class="form-control" id="presentAddress">
+                <input type="text" class="form-control" name="presentAddress" id="presentAddress">
             </div>
             <div class="form-group">
                 <label for="phoneNumber">Phone Number:</label>
-                <input type="text" class="form-control" id="phoneNumber">
+                <input type="text" class="form-control" name="phoneNumber" id="phoneNumber">
             </div>
             <div class="form-group">
                 <label for="aadhaarNumber">Aadhaar Number:</label>
-                <input type="text" class="form-control" id="aadhaarNumber">
+                <input type="text" class="form-control" name="aadhaarNumber" id="aadhaarNumber">
             </div>
             <div class="form-group">
                 <label for="photo">Photo:</label>
-                <input type="file" class="form-control" id="photo">
+                <input type="file" class="form-control" name="photo" id="photo">
             </div>
-            <div class="form-group">
-                <label for="caseHistory">Case History:</label>
-                <textarea class="form-control" id="caseHistory" rows="3"></textarea>
-            </div>
+
             <!-- Family Constellation Section -->
             <h3>Family Constellation</h3>
             <div id="familyMembers">
                 <!-- Family members will be dynamically added here -->
             </div>
             <button type="button" class="btn btn-default" id="addFamilyMember">Add Family Member</button>
-            
+
+            <input type="hidden" name="familyMembers" id="familyMembersInput">
+
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
     </div>
@@ -170,35 +150,35 @@
 
             $("#addFamilyMember").click(function () {
                 familyMemberIndex++;
-                var html = '<div class="panel panel-default">' +
+                var html = '<div class="panel panel-default family-member" data-index="' + familyMemberIndex + '">' +
                     '<div class="panel-body">' +
                     '<div class="form-group">' +
                     '<label for="familyName' + familyMemberIndex + '">Name:</label>' +
-                    '<input type="text" class="form-control" id="familyName' + familyMemberIndex + '">' +
+                    '<input type="text" class="form-control family-name">' +
                     '</div>' +
                     '<div class="form-group">' +
                     '<label for="familyRelation' + familyMemberIndex + '">Relation:</label>' +
-                    '<input type="text" class="form-control" id="familyRelation' + familyMemberIndex + '">' +
+                    '<input type="text" class="form-control family-relation">' +
                     '</div>' +
                     '<div class="form-group">' +
                     '<label for="familyAge' + familyMemberIndex + '">Age:</label>' +
-                    '<input type="number" class="form-control" id="familyAge' + familyMemberIndex + '">' +
+                    '<input type="number" class="form-control family-age">' +
                     '</div>' +
                     '<div class="form-group">' +
                     '<label for="familyOccupation' + familyMemberIndex + '">Occupation:</label>' +
-                    '<input type="text" class="form-control" id="familyOccupation' + familyMemberIndex + '">' +
+                    '<input type="text" class="form-control family-occupation">' +
                     '</div>' +
                     '<div class="form-group">' +
                     '<label for="familyEducation' + familyMemberIndex + '">Education:</label>' +
-                    '<input type="text" class="form-control" id="familyEducation' + familyMemberIndex + '">' +
+                    '<input type="text" class="form-control family-education">' +
                     '</div>' +
                     '<div class="form-group">' +
                     '<label for="familyAliveDead' + familyMemberIndex + '">Alive/Dead:</label>' +
-                    '<input type="text" class="form-control" id="familyAliveDead' + familyMemberIndex + '">' +
+                    '<input type="text" class="form-control family-alive-dead">' +
                     '</div>' +
                     '<div class="form-group">' +
                     '<label for="familyRemarks' + familyMemberIndex + '">Remarks:</label>' +
-                    '<input type="text" class="form-control" id="familyRemarks' + familyMemberIndex + '">' +
+                    '<input type="text" class="form-control family-remarks">' +
                     '</div>' +
                     '</div>' +
                     '</div>';
@@ -207,9 +187,21 @@
             });
 
             $("#childDetailsForm").submit(function (event) {
-                event.preventDefault();
-                // Here you can handle form submission and data saving
-                alert("Data saved successfully!");
+                var familyMembers = [];
+                $(".family-member").each(function () {
+                    var member = {
+                        name: $(this).find(".family-name").val(),
+                        relation: $(this).find(".family-relation").val(),
+                        age: $(this).find(".family-age").val(),
+                        occupation: $(this).find(".family-occupation").val(),
+                        education: $(this).find(".family-education").val(),
+                        alive_dead: $(this).find(".family-alive-dead").val(),
+                        remarks: $(this).find(".family-remarks").val()
+                    };
+                    familyMembers.push(member);
+                });
+
+                $("#familyMembersInput").val(JSON.stringify(familyMembers));
             });
         });
     </script>

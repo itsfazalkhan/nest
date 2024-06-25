@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Child Progress Report Entry</title>
+
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">NEST</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Child Details
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="child_details_entry.html">Entry</a></li>
+                        <li><a href="child_details_view.php">View</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Medicine
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="medicine_stock.html">Medicine Stock</a></li>
+                        <li><a href="medicine_used.html">Medicine Used</a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="child_pr_entry.html">Child Progress Report</a></li>
+                <li><a href="volunteer_register.html">Volunteer Register</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Children Stock/Distribution
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="child_stock_register.html">Stock Entry</a></li>
+                      <li><a href="child_distribution_register.html">Distribution</a></li>
+                      <li><a href="child_stock_view.php">Stock View</a></li>
+                      <li><a href="child_distribution_view.php">Distribution View</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Movement
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="child_movement_register.html">Children's Movement</a></li>
+                      <li><a href="staff_movement_register.html">Staff Movement</a></li>
+                      <li><a href="child_movement_view.php">Children's Movement View</a></li>
+                      <li><a href="staff_movement_view.php">Staff Movement View</a></li>
+                  </ul>
+                </li>
+                <li><a href="parent_meeting_register.html">Parents Meeting</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Child Progress Report</h2>
+            </div>
+            <div class="col-md-6 text-right">
+                <button type="button" class="btn btn-primary" onclick="window.location.href='child_pr_view.php'">View</button>
+            </div>
+        </div>
+        <?php
+        session_start();
+        if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                <?php
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+                unset($_SESSION['msg_type']);
+                ?>
+            </div>
+        <?php endif; ?>
+        <form action="child_pr.php" method="post">
+            <div class="form-group">
+                <label for="child_id">Child ID:</label>
+                <input type="text" class="form-control" id="child_id" name="child_id" required>
+                <label for="child_name">Child Name:</label>
+                <input type="text" class="form-control" id="child_name" name="child_name" required>
+            </div>
+
+            <h3>Academic</h3>
+            <div class="form-group">
+                <label for="english">English:</label>
+                <select class="form-control" id="english" name="english">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="maths">Maths:</label>
+                <select class="form-control" id="maths" name="maths">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="science">Science:</label>
+                <select class="form-control" id="science" name="science">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="social_science">Social Science:</label>
+                <select class="form-control" id="social_science" name="social_science">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="physical_training">Physical Training:</label>
+                <select class="form-control" id="physical_training" name="physical_training">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="general_knowledge">General Knowledge:</label>
+                <select class="form-control" id="general_knowledge" name="general_knowledge">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+
+            <h3>Personality Development</h3>
+            <div class="form-group">
+                <label for="concentration">Concentration:</label>
+                <select class="form-control" id="concentration" name="concentration">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="curiosity">Curiosity:</label>
+                <select class="form-control" id="curiosity" name="curiosity">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="initiative">Initiative:</label>
+                <select class="form-control" id="initiative" name="initiative">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="observation">Observation:</label>
+                <select class="form-control" id="observation" name="observation">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="originality">Originality:</label>
+                <select class="form-control" id="originality" name="originality">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="participation">Participation:</label>
+                <select class="form-control" id="participation" name="participation">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="perseverance">Perseverance:</label>
+                <select class="form-control" id="perseverance" name="perseverance">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="relationship">Relationship:</label>
+                <select class="form-control" id="relationship" name="relationship">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="responsibility">Responsibility:</label>
+                <select class="form-control" id="responsibility" name="responsibility">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="self_confidence">Self Confidence:</label>
+                <select class="form-control" id="self_confidence" name="self_confidence">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+
+            <h3>Co Curricular Activities</h3>
+            <div class="form-group">
+                <label for="art">Art:</label>
+                <select class="form-control" id="art" name="art">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="assembly">Assembly:</label>
+                <select class="form-control" id="assembly" name="assembly">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="craft">Craft:</label>
+                <select class="form-control" id="craft" name="craft">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="drama">Drama:</label>
+                <select class="form-control" id="drama" name="drama">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dance">Dance:</label>
+                <select class="form-control" id="dance" name="dance">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="debate">Debate:</label>
+                <select class="form-control" id="debate" name="debate">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="drill">Drill:</label>
+                <select class="form-control" id="drill" name="drill">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="games">Games:</label>
+                <select class="form-control" id="games" name="games">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quiz">Quiz:</label>
+                <select class="form-control" id="quiz" name="quiz">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="singing">Singing:</label>
+                <select class="form-control" id="singing" name="singing">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <h3>Behaviour & Attitude</h3>
+            <div class="form-group">
+                <label for="accommodating_adjusting">Accommodating and Adjusting:</label>
+                <select class="form-control" id="accommodating_adjusting" name="accommodating_adjusting">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="compassion">Compassion:</label>
+                <select class="form-control" id="compassion" name="compassion">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="emotional_stability">Emotional Stability:</label>
+                <select class="form-control" id="emotional_stability" name="emotional_stability">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hygiene">Hygiene:</label>
+                <select class="form-control" id="hygiene" name="hygiene">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="overcoming_lures">Overcoming Lures:</label>
+                <select class="form-control" id="overcoming_lures" name="overcoming_lures">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="punctuality">Punctuality:</label>
+                <select class="form-control" id="punctuality" name="punctuality">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="social_awareness">Social Awareness:</label>
+                <select class="form-control" id="social_awareness" name="social_awareness">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="secular_outlook">Secular Outlook:</label>
+                <select class="form-control" id="secular_outlook" name="secular_outlook">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#childMovementForm").submit(function (event) {
+                //event.preventDefault();
+                alert("Data saved successfully!");
+            });
+        });
+    </script>
+
+</body>
+</html>

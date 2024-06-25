@@ -21,14 +21,14 @@ if ($conn->connect_error) {
 }
 
 // Step 3: Retrieve form data
-$date = $_POST['date'];
-$name = $_POST['name'];
-$contact = $_POST['contact'];
-$remark = $_POST['remark'];
+$medicine_name = $_POST['medicine_name'];
+$quantity = $_POST['quantity'];
+$date_purchase = $_POST['date_purchase'];
+$expiry_date = $_POST['expiry_date'];
 
 // Step 4: Insert data into the database
-$sql = "INSERT INTO parent_meeting (date, name, contact, remark)
-        VALUES ('$date', '$name', '$contact', '$remark')";
+$sql = "INSERT INTO medicine_stock (medicine_name, quantity, date_purchase, expiry_date)
+        VALUES ('$medicine_name', '$quantity', '$date_purchase', '$expiry_date' )";
 
 if ($conn->query($sql) === TRUE) {
     // Data inserted successfully
@@ -44,6 +44,6 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Redirect back to the form page
-header("Location: parent_meeting_register.html");
+header("Location: medicine_stock.html");
 exit();
 ?>
