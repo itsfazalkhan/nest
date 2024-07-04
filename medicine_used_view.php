@@ -49,6 +49,12 @@ $result = $conn->query($sql);
         th {
             background-color: #f2f2f2;
         }
+        img {
+            max-width: 200px; /* Adjust this value to change the maximum width */
+            max-height: 100px; /* Adjust this value to change the maximum height */
+            width: auto;
+            height: auto;
+        }
     </style>
 </head>
 
@@ -127,7 +133,7 @@ $result = $conn->query($sql);
                         echo "<td>" . $row["child_name"] . "</td>";
                         echo "<td>" . $row["illness"] . "</td>";
                         echo "<td>" . $row["medicine_name"] . "</td>";
-                        echo '<td><img src="data:image/jpeg;base64,' . base64_encode($row['child_sign']) . '" width="100" height="100"/></td>';
+                        echo '<td><img src="' . htmlspecialchars($row["child_sign"]) . '" alt="Child Sign" /></td>';
                         echo "</tr>";
                     }
                 } else {

@@ -32,14 +32,13 @@ $phoneNumber = $_POST['phoneNumber'];
 $aadhaarNumber = $_POST['aadhaarNumber'];
 
 // Handle photo upload
-$photo = null;
-if (isset($_FILES['photo']) && $_FILES['photo']['error'] == UPLOAD_ERR_OK) {
-    $photo = file_get_contents($_FILES['photo']['tmp_name']);
-}
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["photo"]["name"]);
 
 // Insert child details into the database
+if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
 $stmt = $conn->prepare("INSERT INTO child_details (admission_number, date_of_admission, name, age, sex, religion, language, permanent_address, present_address, phone_number, aadhaar_number, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssssssssb", $admissionNumber, $dateOfAdmission, $name, $age, $sex, $religion, $language, $permanentAddress, $presentAddress, $phoneNumber, $aadhaarNumber, $photo);
+$stmt->bind_param("ssssssssssss", $admissionNumber, $dateOfAdmission, $name, $age, $sex, $religion, $language, $permanentAddress, $presentAddress, $phoneNumber, $aadhaarNumber, $target_file);
 
 if ($stmt->execute()) {
     $child_id = $stmt->insert_id;
@@ -58,7 +57,7 @@ if ($stmt->execute()) {
     $_SESSION['message'] = "Error: " . $stmt->error;
     $_SESSION['msg_type'] = "danger";
 }
-
+}
 // Close statements and connection
 $stmt->close();
 $conn->close();

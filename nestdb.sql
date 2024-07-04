@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 07:40 AM
+-- Generation Time: Jul 04, 2024 at 09:22 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -92,7 +92,7 @@ CREATE TABLE `child_details` (
   `present_address` text DEFAULT NULL,
   `phone_number` varchar(15) DEFAULT NULL,
   `aadhaar_number` varchar(20) DEFAULT NULL,
-  `photo` blob DEFAULT NULL
+  `photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -106,7 +106,9 @@ INSERT INTO `child_details` (`id`, `admission_number`, `date_of_admission`, `nam
 (4, '447', '0000-00-00', '0', 58, 'Male', 'hindu', 'j', 'uubn', 'njnn', '555', '75319', ''),
 (5, '7575', '2024-05-10', '0', 55, 'Male', 'fd', 'fbfb', 'ttty', 'yjuk', '888', '222', ''),
 (6, '9789', '2024-05-03', 'ibrahim', 595, 'Other', 'fgfb', 'fbf', 'cbf', 'dbf', '484', '9595', ''),
-(7, '007', '2024-06-14', 'Priya', 33, 'Female', 'Atheist', 'Odiya', 'Odisha', 'Kerela', '9594', '599', NULL);
+(7, '007', '2024-06-14', 'Priya', 33, 'Female', 'Atheist', 'Odiya', 'Odisha', 'Kerela', '9594', '599', NULL),
+(8, '966462', '2024-07-13', 'Simon', 255, 'Male', 'fgfb', 'urdu', 'blr', 'blr', '665282', '85812', ''),
+(9, '875', '2024-07-13', 'Building', 9999, 'Male', 'christian', 'urdu', 'bltl', 'blrt', 'dfgg', '996965', 'uploads/Time-Table.png');
 
 -- --------------------------------------------------------
 
@@ -123,9 +125,9 @@ CREATE TABLE `child_movement` (
   `dep_date` date NOT NULL,
   `return_date` date NOT NULL,
   `remark` varchar(300) NOT NULL,
-  `child_sign` blob NOT NULL,
-  `person_sign` blob NOT NULL,
-  `staff_sign` blob NOT NULL
+  `child_sign` varchar(255) NOT NULL,
+  `person_sign` varchar(255) NOT NULL,
+  `staff_sign` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -134,7 +136,9 @@ CREATE TABLE `child_movement` (
 
 INSERT INTO `child_movement` (`date`, `name`, `place`, `purpose`, `acc_person`, `dep_date`, `return_date`, `remark`, `child_sign`, `person_sign`, `staff_sign`) VALUES
 ('2024-05-17', 'Simon', 'bg', 'st', 'hz', '2024-05-14', '2024-05-29', 'bm', '', '', ''),
-('2024-06-19', 'Rohh', 'TN', 'family', 'brother', '2024-06-10', '2024-06-27', 'enjoy', '', '', '');
+('2024-06-19', 'Rohh', 'TN', 'family', 'brother', '2024-06-10', '2024-06-27', 'enjoy', '', '', ''),
+('2024-07-06', 'Simon', 'DD', 'uu', 'brother', '2024-07-04', '2024-07-20', 'ddsh', 'uploads/Time-Table.png', 'uploads/Capture.PNG', 'uploads/dd.PNG'),
+('2024-07-06', 'Floor', 'khmy', '999', 'brother', '2024-07-04', '2024-07-04', 'ddsh', 'uploads/Capture.PNG', 'uploads/Screenshot (108).png', 'uploads/Screenshot (1).png');
 
 -- --------------------------------------------------------
 
@@ -292,7 +296,7 @@ CREATE TABLE `medicine_used` (
   `child_name` varchar(200) NOT NULL,
   `illness` varchar(200) NOT NULL,
   `medicine_name` varchar(250) NOT NULL,
-  `child_sign` blob NOT NULL
+  `child_sign` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -300,7 +304,10 @@ CREATE TABLE `medicine_used` (
 --
 
 INSERT INTO `medicine_used` (`child_id`, `date`, `child_name`, `illness`, `medicine_name`, `child_sign`) VALUES
-(1, '2024-05-03', 'leo', 'schizophrenia', 'chloroform', '');
+(1, '2024-05-03', 'leo', 'schizophrenia', 'chloroform', ''),
+(58, '2024-07-13', 'fggg', 'yfcu', 'ify', ''),
+(88, '2024-07-13', 'leo', 'myophia', 'drops', ''),
+(549, '2024-07-23', 'fggg', 'bbsybs', 'bbaa', 'uploads/Data Mining .jpg');
 
 -- --------------------------------------------------------
 
@@ -376,7 +383,7 @@ CREATE TABLE `staff_movement` (
   `name` varchar(300) NOT NULL,
   `place` varchar(300) NOT NULL,
   `purpose` varchar(300) NOT NULL,
-  `staff_sign` blob NOT NULL
+  `staff_sign` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -385,7 +392,8 @@ CREATE TABLE `staff_movement` (
 
 INSERT INTO `staff_movement` (`date`, `name`, `place`, `purpose`, `staff_sign`) VALUES
 ('2024-05-16', 'Floor', 'khmy', 'dod', ''),
-('2024-06-20', 'bindu', 'kerela', 'teach', '');
+('2024-06-20', 'bindu', 'kerela', 'teach', ''),
+('2024-07-23', 'Floor', 'khmy', 'eee', 'uploads/Capture.PNG');
 
 -- --------------------------------------------------------
 
@@ -400,7 +408,7 @@ CREATE TABLE `volunteer` (
   `email` varchar(300) NOT NULL,
   `time` time NOT NULL,
   `purpose` varchar(300) NOT NULL,
-  `sign` blob NOT NULL
+  `sign` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -408,7 +416,8 @@ CREATE TABLE `volunteer` (
 --
 
 INSERT INTO `volunteer` (`date`, `name`, `contact`, `email`, `time`, `purpose`, `sign`) VALUES
-('2024-05-30', 'Simon', 53535, 'hbb@fvffv.com', '21:55:00', 'yy', '');
+('2024-05-30', 'Simon', 53535, 'hbb@fvffv.com', '21:55:00', 'yy', ''),
+('2024-07-11', 'admin', 96558521, 'hbb@fvffv.com', '20:50:00', 'dod', 'uploads/1166130.jpg');
 
 --
 -- Indexes for dumped tables
@@ -487,7 +496,7 @@ ALTER TABLE `behaviour_attitude`
 -- AUTO_INCREMENT for table `child_details`
 --
 ALTER TABLE `child_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `co_curricular_activities`
@@ -505,7 +514,7 @@ ALTER TABLE `family_constellation`
 -- AUTO_INCREMENT for table `medicine_used`
 --
 ALTER TABLE `medicine_used`
-  MODIFY `child_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `child_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=550;
 
 --
 -- AUTO_INCREMENT for table `personality_development`

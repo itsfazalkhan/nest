@@ -26,18 +26,14 @@ $place = $_POST['place'];
 $purpose = $_POST['purpose'];
 
 // Step 4: Handle file uploads
-$upload_success = true;
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["staff_sign"]["name"]);
 
-$staff_sign = file_get_contents($_FILES['staff_sign']['tmp_name']);
-
-if ( $staff_sign === false) {
-    $upload_success = false;
-}
 
 // Step 5: Insert data into the database
-if ($upload_success) {
+if (move_uploaded_file($_FILES["staff_sign"]["tmp_name"], $target_file)) {
     $stmt = $conn->prepare("INSERT INTO staff_movement (date, name, place, purpose, staff_sign) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssb", $date, $name, $place, $purpose, $staff_sign);
+    $stmt->bind_param("sssss", $date, $name, $place, $purpose, $target_file);
 
     if ($stmt->execute()) {
         // Data inserted successfully

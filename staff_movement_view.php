@@ -51,6 +51,12 @@ $result = $conn->query($sql);
         th {
             background-color: #f2f2f2;
         }
+        img {
+            max-width: 200px; /* Adjust this value to change the maximum width */
+            max-height: 100px; /* Adjust this value to change the maximum height */
+            width: auto;
+            height: auto;
+        }
     </style>
 </head>
 
@@ -131,7 +137,7 @@ $result = $conn->query($sql);
                         echo "<td>" . $row["name"] . "</td>";
                         echo "<td>" . $row["place"] . "</td>";
                         echo "<td>" . $row["purpose"] . "</td>";
-                        echo "<td><img src='data:image/jpeg;base64," . base64_encode($row["staff_sign"]) . "' alt='Staff Sign' width='100' height='100'></td>";
+                        echo '<td><img src="' . ($row["staff_sign"]) . '" alt="Photo " /></td>';
                         echo "</tr>";
                     }
                 } else {

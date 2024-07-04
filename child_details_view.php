@@ -57,6 +57,12 @@ $resultFamilyConstellation = $conn->query($sqlFamilyConstellation);
         th {
             background-color: #f2f2f2;
         }
+        img {
+            max-width: 200px; /* Adjust this value to change the maximum width */
+            max-height: 100px; /* Adjust this value to change the maximum height */
+            width: auto;
+            height: auto;
+        }
     </style>
 </head>
 
@@ -153,7 +159,7 @@ $resultFamilyConstellation = $conn->query($sqlFamilyConstellation);
                         echo "<td>" . $rowChildDetails["present_address"] . "</td>";
                         echo "<td>" . $rowChildDetails["phone_number"] . "</td>";
                         echo "<td>" . $rowChildDetails["aadhaar_number"] . "</td>";
-                        echo "<td><img src='data:image/jpeg;base64," . base64_encode($rowChildDetails["photo"]) . "' alt='Photo' width='50' height='50'/></td>";
+                        echo '<td><img src="' . ($rowChildDetails["photo"]) . '" alt="Photo " /></td>';
                         echo "</tr>";
                     }
                 } else {

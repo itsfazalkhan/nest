@@ -28,18 +28,14 @@ $time = $_POST['time'];
 $purpose = $_POST['purpose'];
 
 // Step 4: Handle file uploads
-$upload_success = true;
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["signature"]["name"]);
 
-$sign = file_get_contents($_FILES['signature']['tmp_name']);
-
-if ( $signature === false) {
-    $upload_success = false;
-}
 
 // Step 5: Insert data into the database
-if ($upload_success) {
+if (move_uploaded_file($_FILES["signature"]["tmp_name"], $target_file)) {
     $stmt = $conn->prepare("INSERT INTO volunteer (date, name, contact,email,time, purpose, sign) VALUES (?, ?, ?, ?,?,?, ?)");
-    $stmt->bind_param("ssssssb", $date, $name, $contact,$email, $time, $purpose, $sign);
+    $stmt->bind_param("sssssss", $date, $name, $contact,$email, $time, $purpose, $target_file);
 
     if ($stmt->execute()) {
         // Data inserted successfully

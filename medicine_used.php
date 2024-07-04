@@ -27,31 +27,25 @@ $illness = $_POST['illness'];
 $medicine_name = $_POST['medicine_name'];
 
 // Step 4: Handle file uploads
-$upload_success = true;
+// Handle file uploads
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["child_sign"]["name"]);
 
-$child_sign = file_get_contents($_FILES['child_sign']['tmp_name']);
-
-if ( $child_sign === false) {
-    $upload_success = false;
-}
-
-// Step 5: Insert data into the database
-if ($upload_success) {
-    $stmt = $conn->prepare("INSERT INTO medicine_used (child_id, date, child_name, illness,medicine_name, child_sign) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssb",$child_id, $date, $child_name, $illness, $medicine_name, $child_sign);
+if (move_uploaded_file($_FILES["child_sign"]["tmp_name"], $target_file)) {
+    // Insert data into the database
+    $stmt = $conn->prepare("INSERT INTO medicine_used (child_id, date, child_name, illness, medicine_name, child_sign) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $child_id, $date, $child_name, $illness, $medicine_name, $target_file);
 
     if ($stmt->execute()) {
-        // Data inserted successfully
         $_SESSION['message'] = "Data saved successfully!";
         $_SESSION['msg_type'] = "success";
     } else {
-        // Error occurred
         $_SESSION['message'] = "Error: " . $stmt->error;
         $_SESSION['msg_type'] = "danger";
     }
     $stmt->close();
 } else {
-    $_SESSION['message'] = "Error uploading files.";
+    $_SESSION['message'] = "Sorry, there was an error uploading your file.";
     $_SESSION['msg_type'] = "danger";
 }
 

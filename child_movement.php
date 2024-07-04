@@ -30,20 +30,15 @@ $return_date = $_POST['return_date'];
 $remark = $_POST['remark'];
 
 // Step 4: Handle file uploads
-$upload_success = true;
-
-$child_sign = file_get_contents($_FILES['child_sign']['tmp_name']);
-$person_sign = file_get_contents($_FILES['person_sign']['tmp_name']);
-$staff_sign = file_get_contents($_FILES['staff_sign']['tmp_name']);
-
-if ($child_sign === false || $person_sign === false || $staff_sign === false) {
-    $upload_success = false;
-}
+$target_dir = "uploads/";
+$target_file1 = $target_dir . basename($_FILES["child_sign"]["name"]);
+$target_file2 = $target_dir . basename($_FILES["person_sign"]["name"]);
+$target_file3 = $target_dir . basename($_FILES["staff_sign"]["name"]);
 
 // Step 5: Insert data into the database
-if ($upload_success) {
+if (move_uploaded_file($_FILES["child_sign"]["tmp_name"], $target_file1) && move_uploaded_file($_FILES["person_sign"]["tmp_name"], $target_file2) && move_uploaded_file($_FILES["staff_sign"]["tmp_name"], $target_file3)) {
     $stmt = $conn->prepare("INSERT INTO child_movement (date, name, place, purpose, acc_person, dep_date, return_date, remark, child_sign, person_sign, staff_sign) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssbbb", $date, $name, $place, $purpose, $accompanied, $departure_date, $return_date, $remark, $child_sign, $person_sign, $staff_sign);
+    $stmt->bind_param("sssssssssss", $date, $name, $place, $purpose, $accompanied, $departure_date, $return_date, $remark, $target_file1, $target_file2, $target_file3);
 
     if ($stmt->execute()) {
         // Data inserted successfully
