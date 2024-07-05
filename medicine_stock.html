@@ -88,19 +88,19 @@
         <form id="medicineStockForm" action="medicine_stock.php" method="post">
             <div class="form-group">
                 <label for="medicineName">Medicine Name:</label>
-                <input type="text" class="form-control" id="medicine_name" name="medicine_name">
+                <input type="text" class="form-control" id="medicine_name" name="medicine_name" required>
             </div>
             <div class="form-group">
                 <label for="quantity">Quantity:</label>
-                <input type="number" class="form-control" id="quantity" name="quantity">
+                <input type="number" class="form-control" id="quantity" name="quantity" required>
             </div>
             <div class="form-group">
                 <label for="purchaseDate">Date of Purchase:</label>
-                <input type="date" class="form-control" id="date_purchase" name="date_purchase">
+                <input type="date" class="form-control" id="date_purchase" name="date_purchase" required>
             </div>
             <div class="form-group">
                 <label for="expiryDate">Expiry Date:</label>
-                <input type="date" class="form-control" id="expiry_date" name="expiry_date">
+                <input type="date" class="form-control" id="expiry_date" name="expiry_date" required>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
