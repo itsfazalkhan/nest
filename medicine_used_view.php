@@ -4,11 +4,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Step 1: Database connection parameters
-$servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$database = "nestdb"; 
-
+$servername = "nest.wuaze.com";
+$username = "if0_36843521";
+$password = "WQxMQK9kMV7A";
+$database = "if0_36843521_nest";
 // Step 2: Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
