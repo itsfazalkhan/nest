@@ -89,19 +89,19 @@
         <form id="parentForm" action="parent_meeting.php" method="post" >
             <div class="form-group">
                 <label for="meetingDate">Date:</label>
-                <input type="date" class="form-control" id="date" name="date">
+                <input type="date" class="form-control" id="date" name="date" required >
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" required >
             </div>
             <div class="form-group">
                 <label for="contact">Contact:</label>
-                <input type="text" class="form-control" id="contact" name="contact">
+                <input type="text" class="form-control" id="contact" name="contact" required >
             </div>
             <div class="form-group">
                 <label for="remark">Remark:</label>
-                <textarea class="form-control" id="remark" name="remark"></textarea>
+                <textarea class="form-control" id="remark" name="remark" required></textarea>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
