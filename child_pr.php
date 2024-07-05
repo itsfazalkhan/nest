@@ -31,7 +31,7 @@ $result = $stmt->get_result();
 if ($result->num_rows == 0) {
     $_SESSION['message'] = "Invalid child ID or child name";
     $_SESSION['msg_type'] = "danger";
-    header("Location: child_progress_report_entry.html");
+    header("Location: child_pr_entry.html");
     exit();
 }
 
